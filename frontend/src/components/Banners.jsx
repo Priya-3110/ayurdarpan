@@ -7,6 +7,7 @@ import {
   faBowlFood,
   faArrowRight
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom'; // ✅ Import Link
 
 const WellnessDestinations = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,15 +15,12 @@ const WellnessDestinations = () => {
   const observerRef = useRef(null);
 
   useEffect(() => {
-    // Disconnect any existing observer
     if (observerRef.current) {
       observerRef.current.disconnect();
     }
 
-    // Create a new observer
     observerRef.current = new IntersectionObserver(
       ([entry]) => {
-        // Set visible when entering viewport, hide when leaving
         setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.2 }
@@ -39,30 +37,35 @@ const WellnessDestinations = () => {
     };
   }, []);
 
+  // ✅ Added `link` to each card
   const cardData = [
     {
       title: "Authentic Medicines",
       description: "Discover traditional Ayurvedic medicines crafted with pure herbs and ancient wisdom",
       buttonText: "Explore Now",
-      icon: faCapsules
+      icon: faCapsules,
+      link: "/medicines"
     },
     {
       title: "Yoga Poses",
       description: "Master ancient yoga poses with detailed instructions for mind-body harmony",
       buttonText: "Explore Now",
-      icon: faPersonPraying
+      icon: faPersonPraying,
+      link: "/yoga"
     },
     {
       title: "Natural Remedies",
       description: "Time-tested home remedies using natural ingredients from your kitchen",
       buttonText: "Explore Now",
-      icon: faLeaf
+      icon: faLeaf,
+      link: "/remedies"
     },
     {
       title: "Healing Recipes",
       description: "Nourishing Ayurvedic recipes to balance your doshas and enhance vitality",
       buttonText: "Explore Now",
-      icon: faBowlFood
+      icon: faBowlFood,
+      link: "/recipes"
     }
   ];
 
@@ -159,22 +162,22 @@ const WellnessDestinations = () => {
       display: 'flex',
       alignItems: 'center',
       gap: '8px',
+      textDecoration: 'none', // ✅ Removes underline
     },
   };
 
-  // Add hover animation with JavaScript
+  // Hover animations
   const handleCardHover = (e, isHover) => {
     const card = e.currentTarget;
     if (isHover) {
-      card.style.transform = isVisible ? 'translateY(-10px)' : 'translateY(50px) translateY(-10px)';
+      card.style.transform = 'translateY(-10px)';
       card.style.boxShadow = '0 15px 40px rgba(76, 175, 80, 0.2)';
     } else {
-      card.style.transform = isVisible ? 'translateY(0)' : 'translateY(50px)';
+      card.style.transform = 'translateY(0)';
       card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.08)';
     }
   };
 
-  // Add button hover animation
   const handleButtonHover = (e, isHover) => {
     const button = e.currentTarget;
     if (isHover) {
@@ -207,10 +210,7 @@ const WellnessDestinations = () => {
             Embark on a holistic journey through the four pillars of Ayurvedic wellness
           </p>
           
-          <div 
-            style={styles.cardsContainer}
-            className="cards-container"
-          >
+          <div style={styles.cardsContainer} className="cards-container">
             {cardData.map((card, index) => (
               <div 
                 key={index}
@@ -226,13 +226,16 @@ const WellnessDestinations = () => {
                 </div>
                 <h3 style={styles.cardTitle}>{card.title}</h3>
                 <p style={styles.cardDescription}>{card.description}</p>
-                <button 
+
+                {/* ✅ Link instead of button */}
+                <Link
+                  to={card.link}
                   style={styles.cardButton}
                   onMouseEnter={(e) => handleButtonHover(e, true)}
                   onMouseLeave={(e) => handleButtonHover(e, false)}
                 >
                   {card.buttonText} <FontAwesomeIcon icon={faArrowRight} size="sm" />
-                </button>
+                </Link>
               </div>
             ))}
           </div>

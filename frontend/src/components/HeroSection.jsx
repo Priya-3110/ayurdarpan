@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // ✅ Import Link
 
 const FullScreenWellness = () => {
   const [hoverMedicine, setHoverMedicine] = useState(false);
@@ -98,21 +99,28 @@ const FullScreenWellness = () => {
           <p style={styles.subtitle}>
             Discover the transformative power of Ayurveda with our curated collection of authentic medicines, healing practices, and time-tested wisdom.
           </p>
+          
           <div style={styles.buttonContainer}>
-            <button 
-              style={styles.medicineButton}
+              <Link
+              to="/medicines"
+               style={{
+                ...styles.medicineButton,
+                textDecoration: "none",}}
               onMouseEnter={() => setHoverMedicine(true)}
               onMouseLeave={() => setHoverMedicine(false)}
             >
               Explore Medicines →
-            </button>
-            <button 
-              style={styles.yogaButton}
+            </Link>
+            <Link
+              to="/yoga"
+              style={{
+                ...styles.yogaButton,
+                textDecoration: "none",}}
               onMouseEnter={() => setHoverYoga(true)}
               onMouseLeave={() => setHoverYoga(false)}
             >
               Start Yoga Journey
-            </button>
+            </Link>
           </div>
         </div>
       </section>

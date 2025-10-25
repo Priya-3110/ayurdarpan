@@ -65,10 +65,12 @@ export default function YogaPoses() {
   return (
     <div
       style={{
-        minHeight: "100vh",
-        background: "rgba(255, 255, 255, 0.9)",
-        color: "#222",
-        padding: "24px",
+        // minHeight: "100vh",
+        // background: "rgba(255, 255, 255, 0.9)",
+        // color: "#222",
+        // padding: "24px",
+        
+    padding: "2rem", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.8)", marginTop:"8px"
       }}
     >
       {/* Header */}
@@ -86,38 +88,48 @@ export default function YogaPoses() {
           Yoga Poses
         </h1>
         <p style={{ fontSize: '1.2rem', color: '#555', marginBottom: '40px', lineHeight: 1.6 }}>
-          Master ancient yoga asanas with detailed instructions for mind, body, and spirit harmony
+          {/* Master ancient yoga asanas with detailed instructions for mind, body, and spirit harmony */}
+          "Master ancient yoga asanas with detailed instructions that harmonize mind, body, and spirit while nurturing inner peace.”
         </p>
       </div>
 
       {/* Search Bar */}
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
+      <div style={{ margin: '30px auto', maxWidth: '500px', position: 'relative', zIndex: 2 }}>
         <div style={{
           display: "flex",
           alignItems: "center",
-          background: "#2E7D32",
-          borderRadius: 16,
-          padding: "8px 16px",
+          background: "white",
+          borderRadius: '50px',
+           padding: '5px', 
+           boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)', 
+           transition: 'all 0.3s ease', 
+           border: '2px solid #e0e0e0',
+        
+        
           width: "100%",
           maxWidth: 600,
         }}>
-          <Search color="#6ee7b7" style={{ marginRight: 8 }} />
+          <Search  style={{  background: '#4caf50', border: 'none', borderRadius: '50%', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s ease', color: 'white'  }} />
           <input
             aria-label="Search yoga poses"
             type="text"
             placeholder="Search by title, sanskrit, category or level..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            style={{
-              background: "transparent",
-              border: "none",
-              outline: "none",
-              flex: 1,
-              color: "white",
-              fontSize: 16,
-            }}
+            // style={{
+            //   background: "transparent",
+            //   border: "none",
+            //   outline: "none",
+            //   flex: 1,
+            //   color: "white",
+            //   fontSize: 16,
+            // }}
+
+             onFocus={() => setIsFocused(true)} 
+                onBlur={() => setIsFocused(false)} 
+                style={{ flex: 1, border: 'none', padding: '15px 20px', fontSize: '1rem', borderRadius: '50px', outline: 'none', background: 'transparent' }} 
           />
-          <Filter color="#6ee7b7" style={{ marginLeft: 8 }} />
+          <Filter style={{  background: '#4caf50', border: 'none', borderRadius: '50%', width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', transition: 'all 0.3s ease', color: 'white'  }} />
         </div>
       </div>
 

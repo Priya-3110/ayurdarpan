@@ -335,7 +335,7 @@ const Cart = () => {
                       fontWeight: 'bold',
                       margin: 0,
                       fontSize: '1.1rem'
-                    }}>${item.price.toFixed(2)}</p>
+                    }}>₹{item.price.toFixed(2)}</p>
                   </div>
                   
                   <div style={{
@@ -398,7 +398,7 @@ const Cart = () => {
                     fontWeight: 'bold',
                     fontSize: '1.1rem'
                   }}>
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ₹{(item.price * item.quantity).toFixed(2)}
                   </div>
                   
                   <button 
@@ -442,7 +442,7 @@ const Cart = () => {
                 marginBottom: '10px'
               }}>
                 <span>Subtotal</span>
-                <span>${totalPrice.toFixed(2)}</span>
+                <span>₹{totalPrice.toFixed(2)}</span>
               </div>
               
               <div style={{
@@ -451,7 +451,7 @@ const Cart = () => {
                 marginBottom: '10px'
               }}>
                 <span>Shipping</span>
-                <span>$5.00</span>
+                <span>₹5.00</span>
               </div>
               
               <div style={{
@@ -460,7 +460,7 @@ const Cart = () => {
                 marginBottom: '10px'
               }}>
                 <span>Tax</span>
-                <span>${(totalPrice * 0.08).toFixed(2)}</span>
+                <span>₹{(totalPrice * 0.08).toFixed(2)}</span>
               </div>
               
               <div style={{
@@ -473,7 +473,7 @@ const Cart = () => {
                 borderTop: '1px dashed #ddd'
               }}>
                 <span>Total</span>
-                <span>${(totalPrice + 5 + totalPrice * 0.08).toFixed(2)}</span>
+                <span>₹{(totalPrice + 5 + totalPrice * 0.08).toFixed(2)}</span>
               </div>
               
               <button className="checkout-btn" style={{
@@ -499,3 +499,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
+

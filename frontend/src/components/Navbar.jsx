@@ -6,6 +6,7 @@ const TransparentGreenNavbar = () => {
   const [activeItem, setActiveItem] = useState('Home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
   const location = useLocation();
   const navigate = useNavigate(); // Add useNavigate hook
 
@@ -46,6 +47,9 @@ const TransparentGreenNavbar = () => {
     }
     else if (location.pathname === '/yoga') {
       setActiveItem('YogaPoses');
+    }
+    else if (location.pathname === '/quiz') {
+      setActiveItem('DoshaQuiz');
     }
 
     window.addEventListener('scroll', handleScroll);
@@ -404,14 +408,24 @@ const handleLogin = () => {
               <div 
                 style={styles.logoIcon}
                 className="logo-icon"
-                onMouseEnter={() => handleLogoHover(true)}
-                onMouseLeave={() => handleLogoHover(false)}
+               onMouseEnter={() => setIsLogoHovered(true)}
+              onMouseLeave={() => setIsLogoHovered(false)}
+
               >
-                <svg viewBox="0 0 100 100" style={styles.logoSvg}>
-                  <circle cx="50" cy="50" r="45" style={styles.logoCircle} />
-                  <path d="M30,30 L70,70 M70,30 L30,70" style={styles.logoCross} />
-                </svg>
+                <img 
+                  src="https://i.ibb.co/QFNG7S2Q/Ayurdarpan-Harmony-in-Balance.png"  // 🔗 replace with your actual logo link
+                  alt="Logo"
+                  style={{
+                    height: "50px",
+                    width: "50px",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    transition: "transform 0.3s ease",
+                    transform: isLogoHovered ? "scale(1.1)" : "scale(1)",
+                  }}
+                />
               </div>
+
             </div>
 
             {/* Brand Name */}
@@ -427,7 +441,7 @@ const handleLogin = () => {
 
           {/* Navigation Items */}
           <ul style={styles.navMenu}>
-            {['Home', 'YogaPoses', 'Medicines', 'Recipe', 'HomeRemedies'].map((item) => (
+            {['Home', 'YogaPoses', 'Medicines', 'Recipe', 'HomeRemedies' , 'DoshaQuiz'].map((item) => (
               <li key={item} style={styles.navItem}>
                 {item === 'Home' ? (
                   <Link
@@ -489,7 +503,19 @@ const handleLogin = () => {
                     {item}
                     <span style={styles.navLinkUnderline}></span>
                   </Link>
-                )  : (
+                ) : item === 'DoshaQuiz' ? (
+                  <Link
+                    to="/quiz"
+                    style={styles.navLink}
+                    className={activeItem === item ? 'nav-link active' : 'nav-link'}
+                    onMouseEnter={(e) => handleHover(e, true)}
+                    onMouseLeave={(e) => handleHover(e, false)}
+                    onClick={() => handleNavClick(item)}
+                  >
+                    {item}
+                    <span style={styles.navLinkUnderline}></span>
+                  </Link>
+                ): (
                   <a
                     href="#"
                     style={styles.navLink}
@@ -522,7 +548,7 @@ const handleLogin = () => {
               <svg width="24" height="24" viewBox="0 0 24 24" fill={isScrolled ? '#2E7D32' : 'rgba(46, 125, 50, 0.9)'}>
                 <path d="M7 22C5.9 22 5 21.1 5 20S5.9 18 7 18 9 18.9 9 20 8.1 22 7 22M17 22C15.9 22 15 21.1 15 20S15.9 18 17 18 19 18.9 19 20 18.1 22 17 22M21.5 18H7.5C6.8 18 6.2 17.6 6 17L1 2H0V0H3C3.6 0 4 0.4 4.2 0.9L5.2 3H22C22.4 3 22.7 3.2 22.9 3.6C23.1 4 23 4.4 22.8 4.8L19.3 11C19 11.6 18.4 12 17.7 12H8.5L7.8 14H19C19.6 14 20 14.4 20 15S19.6 16 19 16H7C6.4 16 6 15.6 6 15C6 14.8 6 14.7 6.1 14.5L7.5 11.6L3 4H1V2H4.3L5.1 4L6.9 7.6L5.4 10.4C5.1 10.8 5 11.3 5.2 11.8C5.4 12.3 5.9 12.6 6.4 12.6H18C18.2 12.6 18.4 12.6 18.5 12.5C18.6 12.4 18.7 12.4 18.8 12.3L21.6 7.5C21.9 7 22 6.5 21.9 6C21.8 5.5 21.5 5 21 4.6C20.6 4.2 20 4 19.5 4H6.5L5.8 2.4C5.7 2.1 5.5 2 5.2 2H2V4L6 15H17C17.6 15 18 15.4 18 16S17.6 17 17 17H7.5C7.2 17 7 16.8 6.9 16.6L6.6 16H20.5C21.1 16 21.5 16.4 21.5 17S21.1 18 20.5 18H21.5Z" />
               </svg>
-              <div style={styles.cartCount}>3</div>
+              <div style={styles.cartCount}>1</div>
             </div>
 
             {isLoggedIn ? (

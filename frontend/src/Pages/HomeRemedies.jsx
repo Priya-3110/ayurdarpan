@@ -103,9 +103,9 @@ const HomeRemedies = () => {
     <div style={styles.container}>
       {/* Header Section */}
       <header style={styles.header}>
-        <div style={styles.headerContent}>
+        
           <h1 style={styles.title}>Home Remedies</h1>
-          <p style={styles.subtitle}>Discover time-tested natural remedies using ingredients from your kitchen</p>
+          <p style={styles.subtitle}>“Discover time-tested natural remedies made with pure, simple ingredients from your kitchen to promote healing.”</p>
           
           <div style={styles.searchContainer}>
             <div style={styles.searchWrapper}>
@@ -114,14 +114,14 @@ const HomeRemedies = () => {
               </svg>
               <input
                 type="text"
-                placeholder="Search for wellness..."
+                placeholder="Search for Remedies..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={styles.searchInput}
               />
             </div>
           </div>
-        </div>
+        
       </header>
 
       {/* Main Content */}
@@ -252,20 +252,17 @@ const HomeRemedies = () => {
 
 const styles = {
   container: {
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 20px 40px',
-    backgroundColor: '#f9f9f9',
-    minHeight: '100vh',
+    // fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    // maxWidth: '1200px',
+    // margin: '0 auto',
+    // padding: '0 20px 40px',
+    // backgroundColor: '#f9f9f9',
+    // minHeight: '100vh',
+
+     padding: "2rem", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.8)", marginTop:"30px"
   },
   header: {
-    background: 'linear-gradient(135deg, rgb(63 217 12) 0%, rgb(74, 105, 189) 100%)',
-    color: 'white',
-    padding: '40px 20px',
-    margin: '50px -20px 30px',
-    borderRadius: '0 0 12px 12px',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+   padding: "2rem", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.8)", margin: '8px 0 40px'
   },
   headerContent: {
     maxWidth: '700px',
@@ -273,16 +270,28 @@ const styles = {
     textAlign: 'center',
   },
   title: {
-    fontSize: '2.8rem',
-    fontWeight: '700',
-    margin: '0 0 15px 0',
-    textShadow: '1px 1px 3px rgba(0,0,0,0.2)',
+    // fontSize: '2.8rem',
+    // fontWeight: '700',
+    // margin: '0 0 15px 0',
+    // textShadow: '1px 1px 3px rgba(0,0,0,0.2)',
+
+    fontSize: '3rem',
+        color: '#2c5c1f',
+        marginBottom: '20px',
+        fontWeight: 'bold',
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)',
+        background: 'linear-gradient(135deg, #2c5c1f 0%, #4CAF50 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        textAlign:"center"
   },
   subtitle: {
-    fontSize: '1.2rem',
-    margin: '0 0 30px 0',
-    opacity: '0.9',
-    fontWeight: '300',
+    // fontSize: '1.2rem',
+    // margin: '0 0 30px 0',
+    // opacity: '0.9',
+    // fontWeight: '300',
+     fontSize: '1.2rem', color: '#555', marginBottom: '40px', lineHeight: 1.6, textAlign:"center"
   },
   searchContainer: {
     display: 'flex',

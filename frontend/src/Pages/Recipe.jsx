@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Search, Filter } from "lucide-react";
 import RecipeCard from "../components/RecipeCard";
 import RecipeModal from "../components/RecipeModal";
 import api from "../api"; // axios instance
@@ -33,7 +34,7 @@ export default function RecipesPage() {
   );
 
   return (
-    <div style={{ padding: "2rem", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.8)", marginTop:"70px" }}>
+    <div style={{ padding: "2rem", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.8)", marginTop:"72px" }}>
       <h1 style={{
         fontSize: '3rem',
         color: '#2c5c1f',
@@ -49,22 +50,23 @@ export default function RecipesPage() {
         Ayurvedic Healthy Recipes
       </h1>
       <p style={{ fontSize: '1.2rem', color: '#555', marginBottom: '40px', lineHeight: 1.6, textAlign:"center" }}>
-        "Discover wholesome Ayurvedic recipes tailored to balance your doshas and nourish your body, mind, and soul."
+       “Discover wholesome Ayurvedic recipes carefully tailored to balance your doshas and nourish your body, mind, and soul.”
       </p>
 
       {/* Search & Filter */}
-      <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginBottom: "1.5rem", }}>
+        
         <input
           type="text"
-          placeholder="Search recipes..."
+          placeholder="Search Recipes..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ padding: "0.5rem 1rem", borderRadius: "0.5rem", border: "1px solid #4caf50", width: "250px" }}
+          style={{ padding: '15px 20px', fontSize: '1rem', borderRadius: '50px', border: "1px solid #4caf50", width: "250px" ,borderRadius: '50px', padding: '5px', boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)'}}
         />
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          style={{ padding: "0.5rem 1rem", borderRadius: "0.5rem", border: "1px solid #4caf50" }}
+          style={{ padding: '15px 20px', fontSize: '1rem', borderRadius: '50px', border: "1px solid #4caf50", boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)' }}
         >
           <option value="All">All Doshas</option>
           <option value="Vata">Vata</option>

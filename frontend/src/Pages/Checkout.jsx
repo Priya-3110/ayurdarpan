@@ -158,7 +158,7 @@ const Checkout = () => {
                 <span>
                   {item.name} × {item.quantity}
                 </span>
-                <span>${(item.price * item.quantity).toFixed(2)}</span>
+                <span>₹{(item.price * item.quantity).toFixed(2)}</span>
               </div>
             ))
           )}
@@ -173,7 +173,7 @@ const Checkout = () => {
               }}
             >
               <span>Total:</span>
-              <span>${total} + Shipping</span>
+              <span>₹{total} + Shipping</span>
             </div>
           )}
         </div>

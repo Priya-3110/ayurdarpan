@@ -12,6 +12,7 @@ import Login from './components/Login';
 import Checkout from './Pages/Checkout'; 
 import YogaPoses from './Pages/YogaPoses'; 
 import Recipe from './Pages/Recipe'; // ✅ Import Checkout
+import DoshaQuiz from './Pages/DoshaQuiz'; 
 
 const App = () => {
   return (
@@ -99,6 +100,18 @@ const App = () => {
             </>
           }
         />
+        {/* Dosha Quiz route */}
+        <Route
+          path="/quiz"
+          element={
+            <>
+              <Navbar />
+              <DoshaQuiz />
+              <Footer />
+            </>
+          }
+        />
+
           <Route
           path="/recipes"
           element={
