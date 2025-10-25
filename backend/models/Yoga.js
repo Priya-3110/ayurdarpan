@@ -2,13 +2,18 @@
 const mongoose = require("mongoose");
 
 const yogaSchema = new mongoose.Schema({
+  id: { type: Number, required: true, unique: true }, // numeric ID
   title: { type: String, required: true },
+  sanskrit: { type: String },
+  category: { type: String },
+  description: { type: String },
   image: { type: String },
-  level: { type: String, enum: ["Beginner","Intermediate","Advanced"], default: "Beginner" },
-  durationMinutes: { type: Number }, // recommended duration
+  video: { type: String },
+  level: { type: String, enum: ["beginner", "intermediate", "advanced"], default: "beginner" },
+  duration: { type: String }, // e.g., "2 min", "3 min"
   benefits: [String],
-  steps: [String],
-  type: { type: String }, // e.g., "Asana", "Pranayama", "Meditation"
+  instructions: [String],
+  precautions: { type: String },
   created_at: { type: Date, default: Date.now }
 });
 

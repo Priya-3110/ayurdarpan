@@ -287,7 +287,7 @@ const Medicines = () => {
                   )}
                 </ul>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '15px' }}>
-                  <div style={{ fontSize: '1.3rem', fontWeight: 'bold', color: '#2c5c1f', transition: 'all 0.3s ease', transform: hoveredCard === product.id ? 'scale(1.05)' : 'none' }}>${typeof product.price === 'number' ? product.price.toFixed(2) : '0.00'}</div>
+                  <div style={{ fontSize: '1.3rem', fontWeight: 'bold', color: '#2c5c1f', transition: 'all 0.3s ease', transform: hoveredCard === product.id ? 'scale(1.05)' : 'none' }}>₹{typeof product.price === 'number' ? product.price.toFixed(2) : '0.00'}</div>
                   <button id={`add-to-cart-${product.id}`} className="add-to-cart-btn" style={{ background: 'linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '25px', cursor: 'pointer', fontWeight: 'bold', transition: 'all 0.3s ease', transform: hoveredCard === product.id ? 'translateY(-3px) scale(1.05)' : 'none', boxShadow: hoveredCard === product.id ? '0 5px 15px rgba(76, 175, 80, 0.3)' : 'none' }} onClick={() => addToCart(product.id)}>Add to Cart</button>
                 </div>
               </div>
