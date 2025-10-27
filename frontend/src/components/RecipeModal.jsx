@@ -17,8 +17,8 @@ export default function RecipeModal({ recipe, onClose }) {
     >
       <div
         style={{
-          backgroundColor: "#f0fdf4", // yellow-50
-          color: "#065f46", // yellow-900
+          backgroundColor: "#f0fdf4", // light green
+          color: "#065f46", // dark green text
           borderRadius: "1rem",
           boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
           padding: "1.5rem",
@@ -26,10 +26,10 @@ export default function RecipeModal({ recipe, onClose }) {
           maxWidth: "768px",
           position: "relative",
           overflowY: "auto",
-          maxHeight: "70vh",
+          maxHeight: "80vh",
         }}
       >
-        {/* Close Button */}
+        {/* ✕ Close Button */}
         <button
           onClick={onClose}
           style={{
@@ -48,13 +48,13 @@ export default function RecipeModal({ recipe, onClose }) {
           ✕
         </button>
 
-        {/* Title */}
+        {/* 🥗 Title & Dosha */}
         <h2 style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
           {recipe.title}
         </h2>
         <p style={{ fontStyle: "italic" }}>{recipe.dosha} friendly</p>
 
-        {/* Image */}
+        {/* 🖼 Image */}
         <img
           src={recipe.image}
           alt={recipe.title}
@@ -67,7 +67,7 @@ export default function RecipeModal({ recipe, onClose }) {
           }}
         />
 
-        {/* Ingredients */}
+        {/* 🍵 Ingredients */}
         <h3 style={{ fontWeight: "600", fontSize: "1.125rem", marginTop: "1rem" }}>
           Ingredients
         </h3>
@@ -79,7 +79,7 @@ export default function RecipeModal({ recipe, onClose }) {
           ))}
         </ul>
 
-        {/* Procedure */}
+        {/* 👩‍🍳 Procedure */}
         <h3 style={{ fontWeight: "600", fontSize: "1.125rem", marginTop: "1rem" }}>
           Procedure
         </h3>
@@ -91,19 +91,29 @@ export default function RecipeModal({ recipe, onClose }) {
           ))}
         </ol>
 
-        {/* Benefits */}
-        <h3 style={{ fontWeight: "600", fontSize: "1.125rem", marginTop: "1rem" }}>
-          Benefits
-        </h3>
-        <ul style={{ marginLeft: "1.5rem", marginTop: "0.5rem" }}>
-          {recipe.benefits.map((benefit, i) => (
-            <li key={i} style={{ listStyleType: "disc", marginBottom: "0.25rem" }}>
-              {benefit}
-            </li>
-          ))}
-        </ul>
+        {/* 🌿 Benefits */}
+        {recipe.benefits && recipe.benefits.length > 0 && (
+          <>
+            <h3
+              style={{
+                fontWeight: "600",
+                fontSize: "1.125rem",
+                marginTop: "1rem",
+              }}
+            >
+              Benefits
+            </h3>
+            <ul style={{ marginLeft: "1.5rem", marginTop: "0.5rem" }}>
+              {recipe.benefits.map((benefit, i) => (
+                <li key={i} style={{ listStyleType: "disc", marginBottom: "0.25rem" }}>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
 
-        {/* Nutrient Breakdown */}
+        {/* 🍽 Nutrient Breakdown */}
         <h3 style={{ fontWeight: "600", fontSize: "1.125rem", marginTop: "1rem" }}>
           Nutrient Breakdown
         </h3>
@@ -114,6 +124,34 @@ export default function RecipeModal({ recipe, onClose }) {
             </li>
           ))}
         </ul>
+
+        {/* 🎥 Video Section */}
+        {recipe.video && (
+          <div style={{ marginTop: "1.5rem" }}>
+            <h3
+              style={{
+                fontWeight: "600",
+                fontSize: "1.125rem",
+                marginBottom: "0.5rem",
+              }}
+            >
+              Watch Recipe Video
+            </h3>
+            <iframe
+              width="100%"
+              height="315"
+              src={recipe.video.replace("youtu.be/", "www.youtube.com/embed/")}
+              title="Recipe Video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{
+                borderRadius: "0.5rem",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+              }}
+            ></iframe>
+          </div>
+        )}
       </div>
     </div>
   );

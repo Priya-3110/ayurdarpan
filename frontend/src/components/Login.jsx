@@ -107,7 +107,7 @@ const Login = () => {
           Welcome Back!
         </h2>
         <p className="animation" style={{ "--i": 1, "--j": 21 }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, rem?
+         Welcome back! Please login to your account.
         </p>
       </div>
 
@@ -178,7 +178,7 @@ const Login = () => {
           Welcome Back!
         </h2>
         <p className="animation" style={{ "--i": 18, "--j": 1 }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, rem?
+          Create an account to get started!
         </p>
       </div>
     </div>

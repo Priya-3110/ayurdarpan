@@ -13,7 +13,8 @@ const recipeSchema = new mongoose.Schema({
     Protein: String,
     Fat: String,
     Carbs: String
-  }
+  },
+  video: String // ✅ Added field for YouTube or embed link
 });
 
 module.exports = mongoose.model("Recipe", recipeSchema);

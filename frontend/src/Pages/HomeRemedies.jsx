@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from "../api"; // import axios instance
+import RemediesVideoModal from '../components/RemediesVideoModal';
 
 // Import all your images (you'll need to add these imports)
 import honeyginger from '../assets/honeyginger.jpeg';
@@ -18,6 +19,7 @@ const HomeRemedies = () => {
   const [selectedRemedy, setSelectedRemedy] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   // Map image imports to remedy IDs
   const imageMap = {
@@ -47,13 +49,20 @@ const HomeRemedies = () => {
   }, []);
 
 
-  const filteredRemedies = remedies.filter(remedy =>
-    remedy.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    remedy.for.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    remedy.ingredients.some(ingredient => 
-      ingredient.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+  const filteredRemedies = remedies.filter(remedy => {
+  const title = remedy?.title?.toLowerCase() || "";
+  const remedyFor = remedy?.for?.toLowerCase() || "";
+  const ingredients = Array.isArray(remedy.ingredients)
+    ? remedy.ingredients.map(i => i.toLowerCase())
+    : [];
+
+  return (
+    title.includes(searchTerm.toLowerCase()) ||
+    remedyFor.includes(searchTerm.toLowerCase()) ||
+    ingredients.some(ingredient => ingredient.includes(searchTerm.toLowerCase()))
   );
+});
+
 
   const openModal = (remedy) => {
     setSelectedRemedy(remedy);
@@ -100,6 +109,7 @@ const HomeRemedies = () => {
   };
 
   return (
+    
     <div style={styles.container}>
       {/* Header Section */}
       <header style={styles.header}>
@@ -177,6 +187,17 @@ const HomeRemedies = () => {
                   <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
                 </svg>
               </button>
+              <button
+            onClick={() => setSelectedVideo(remedy.video)}
+            style={{
+              ...getButtonStyles(remedy._id || remedy.id || index),
+              marginTop: "10px",
+              backgroundColor: "#3182ce",
+            }}
+          >
+            ▶ Watch Video
+          </button>
+
             </div>
           ))}
         </div>
@@ -245,6 +266,12 @@ const HomeRemedies = () => {
           </div>
         </div>
       )}
+      {/* Video Modal */}
+<RemediesVideoModal
+  videoUrl={selectedVideo}
+  onClose={() => setSelectedVideo(null)}
+/>
+
     </div>
   );
 };
